@@ -323,15 +323,51 @@ nav a:hover {
 }
 
 .about-image-wrapper {
-  border-radius: 50%; /* Perfect circle placeholder */
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.05);
-  background: rgba(255,255,255,0.03);
+  position: relative;
   aspect-ratio: 1/1;
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
   transform: translateZ(60px);
+  border-radius: 50%;
+}
+
+.about-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 40%, rgba(10, 255, 80, 0.2) 70%, rgba(10, 255, 80, 0.8) 100%);
+  z-index: -1;
+  animation: spinGlow 3s linear infinite;
+  filter: blur(12px);
+}
+
+.about-image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 60%, rgba(10, 255, 80, 0.6) 80%, #0aff50 100%);
+  z-index: -1;
+  animation: spinGlow 3s linear infinite;
+  filter: blur(2px);
+}
+
+@keyframes spinGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.about-image-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.05);
+  background-color: var(--bg-color);
+  background-image: linear-gradient(rgba(255,255,255,0.03), rgba(255,255,255,0.03));
+  z-index: 10;
 }
 
 .about-image {
@@ -339,6 +375,7 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 50%;
 }
 
 .about-text-content {

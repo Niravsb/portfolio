@@ -229,7 +229,9 @@ export default function Home() {
         <div className="container">
           <div className="about-grid" id="about-card">
             <div className="about-image-wrapper reveal-element">
-              {/* Image Removed for now, rounded space placeholder kept */}
+              <div className="about-image-inner">
+                {/* Image Removed for now, rounded space placeholder kept */}
+              </div>
             </div>
             <div className="about-text-content">
               <h2 className="section-title reveal-element">About</h2>
